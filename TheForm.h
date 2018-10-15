@@ -1,4 +1,5 @@
 #pragma once
+#include <math.h>
 
 namespace AirInTheRoom {
 
@@ -8,22 +9,9 @@ namespace AirInTheRoom {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace ZedGraph;
 
-	class CHM_Point
-	{
-	public:
-		double X;
-		double V;
-		double H;
-		CHM_Point() { X = 0; V = 0; H = 0; }
-		CHM_Point(double x = 0, double v = 0, double h = 0)
-		{
-			X = x;
-			V = v;
-			H = h;
-		}
-		~CHM_Point();
-	};
+	using namespace System::Globalization;
 
 	/// <summary>
 	/// Summary for TheForm
@@ -90,13 +78,16 @@ namespace AirInTheRoom {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  hi_tab;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  LP_tab;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  vi_u_tab;
-	private: System::Windows::Forms::CheckBox^  Constant_Step;
+	private: System::Windows::Forms::CheckBox^  Constant_Step_in;
+	private: ZedGraph::ZedGraphControl^  zedGraphControl1;
+	private: System::ComponentModel::IContainer^  components;
+
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -105,7 +96,9 @@ namespace AirInTheRoom {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->Constant_Step_in = (gcnew System::Windows::Forms::CheckBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -128,19 +121,19 @@ namespace AirInTheRoom {
 			this->DataTable = (gcnew System::Windows::Forms::DataGridView());
 			this->xi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->vi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->hi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->v21_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->sub_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->hi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->LP_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->vi_u_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Constant_Step = (gcnew System::Windows::Forms::CheckBox());
+			this->zedGraphControl1 = (gcnew ZedGraph::ZedGraphControl());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DataTable))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// panel1
 			// 
-			this->panel1->Controls->Add(this->Constant_Step);
+			this->panel1->Controls->Add(this->Constant_Step_in);
 			this->panel1->Controls->Add(this->label3);
 			this->panel1->Controls->Add(this->label2);
 			this->panel1->Controls->Add(this->label1);
@@ -164,6 +157,17 @@ namespace AirInTheRoom {
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(285, 229);
 			this->panel1->TabIndex = 0;
+			// 
+			// Constant_Step_in
+			// 
+			this->Constant_Step_in->AutoSize = true;
+			this->Constant_Step_in->Location = System::Drawing::Point(161, 169);
+			this->Constant_Step_in->Name = L"Constant_Step_in";
+			this->Constant_Step_in->Size = System::Drawing::Size(111, 17);
+			this->Constant_Step_in->TabIndex = 21;
+			this->Constant_Step_in->Text = L"Постоянный шаг";
+			this->Constant_Step_in->UseVisualStyleBackColor = true;
+			this->Constant_Step_in->CheckedChanged += gcnew System::EventHandler(this, &TheForm::Constant_Step_CheckedChanged);
 			// 
 			// label3
 			// 
@@ -224,6 +228,7 @@ namespace AirInTheRoom {
 			this->Reload->TabIndex = 13;
 			this->Reload->Text = L"Обновить";
 			this->Reload->UseVisualStyleBackColor = true;
+			this->Reload->Click += gcnew System::EventHandler(this, &TheForm::Reload_Click);
 			// 
 			// Exit
 			// 
@@ -251,6 +256,7 @@ namespace AirInTheRoom {
 			this->TypeOfTask_in->Name = L"TypeOfTask_in";
 			this->TypeOfTask_in->Size = System::Drawing::Size(146, 21);
 			this->TypeOfTask_in->TabIndex = 10;
+			this->TypeOfTask_in->Text = L"Основная";
 			// 
 			// StartStep_in
 			// 
@@ -266,7 +272,7 @@ namespace AirInTheRoom {
 			this->MaxStepsCount_in->Name = L"MaxStepsCount_in";
 			this->MaxStepsCount_in->Size = System::Drawing::Size(121, 20);
 			this->MaxStepsCount_in->TabIndex = 8;
-			this->MaxStepsCount_in->Text = L"10000";
+			this->MaxStepsCount_in->Text = L"100";
 			this->MaxStepsCount_in->TextChanged += gcnew System::EventHandler(this, &TheForm::MaxStepsCount_in_TextChanged);
 			// 
 			// StartStep_label
@@ -337,12 +343,12 @@ namespace AirInTheRoom {
 			this->DataTable->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->DataTable->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
 				this->xi_tab, this->vi_tab,
-					this->v21_tab, this->sub_tab, this->hi_tab, this->LP_tab, this->vi_u_tab
+					this->hi_tab, this->v21_tab, this->sub_tab, this->LP_tab, this->vi_u_tab
 			});
-			this->DataTable->Location = System::Drawing::Point(297, 12);
+			this->DataTable->Location = System::Drawing::Point(296, 204);
 			this->DataTable->Name = L"DataTable";
-			this->DataTable->Size = System::Drawing::Size(614, 336);
-			this->DataTable->TabIndex = 1;
+			this->DataTable->Size = System::Drawing::Size(455, 152);
+			this->DataTable->TabIndex = 2;
 			// 
 			// xi_tab
 			// 
@@ -356,6 +362,12 @@ namespace AirInTheRoom {
 			this->vi_tab->Name = L"vi_tab";
 			this->vi_tab->ReadOnly = true;
 			// 
+			// hi_tab
+			// 
+			this->hi_tab->HeaderText = L"hi = xi - x(i-1)";
+			this->hi_tab->Name = L"hi_tab";
+			this->hi_tab->ReadOnly = true;
+			// 
 			// v21_tab
 			// 
 			this->v21_tab->HeaderText = L"v2i";
@@ -367,12 +379,6 @@ namespace AirInTheRoom {
 			this->sub_tab->HeaderText = L"vi-v2i";
 			this->sub_tab->Name = L"sub_tab";
 			this->sub_tab->ReadOnly = true;
-			// 
-			// hi_tab
-			// 
-			this->hi_tab->HeaderText = L"hi = xi - x(i-1)";
-			this->hi_tab->Name = L"hi_tab";
-			this->hi_tab->ReadOnly = true;
 			// 
 			// LP_tab
 			// 
@@ -386,21 +392,27 @@ namespace AirInTheRoom {
 			this->vi_u_tab->Name = L"vi_u_tab";
 			this->vi_u_tab->ReadOnly = true;
 			// 
-			// Constant_Step
+			// zedGraphControl1
 			// 
-			this->Constant_Step->AutoSize = true;
-			this->Constant_Step->Location = System::Drawing::Point(161, 169);
-			this->Constant_Step->Name = L"Constant_Step";
-			this->Constant_Step->Size = System::Drawing::Size(111, 17);
-			this->Constant_Step->TabIndex = 21;
-			this->Constant_Step->Text = L"Постоянный шаг";
-			this->Constant_Step->UseVisualStyleBackColor = true;
+			this->zedGraphControl1->Location = System::Drawing::Point(296, 12);
+			this->zedGraphControl1->Name = L"zedGraphControl1";
+			this->zedGraphControl1->ScrollGrace = 0;
+			this->zedGraphControl1->ScrollMaxX = 0;
+			this->zedGraphControl1->ScrollMaxY = 0;
+			this->zedGraphControl1->ScrollMaxY2 = 0;
+			this->zedGraphControl1->ScrollMinX = 0;
+			this->zedGraphControl1->ScrollMinY = 0;
+			this->zedGraphControl1->ScrollMinY2 = 0;
+			this->zedGraphControl1->Size = System::Drawing::Size(455, 186);
+			this->zedGraphControl1->TabIndex = 0;
+			this->zedGraphControl1->Load += gcnew System::EventHandler(this, &TheForm::zedGraphControl1_Load);
 			// 
 			// TheForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(923, 361);
+			this->ClientSize = System::Drawing::Size(760, 361);
+			this->Controls->Add(this->zedGraphControl1);
 			this->Controls->Add(this->DataTable);
 			this->Controls->Add(this->panel1);
 			this->Name = L"TheForm";
@@ -414,27 +426,26 @@ namespace AirInTheRoom {
 		}
 #pragma endregion
 	private: System::Void TheForm_Load(System::Object^  sender, System::EventArgs^  e) {
-		double Epsl = Convert::ToDouble(Eps_in->Text);
-		double LocalErrorControl = Convert::ToDouble(LocalErrorControl_in->Text);
-		int MaxStepsCount = Convert::ToInt32(MaxStepsCount_in->Text);
-		int StartStep = Convert::ToInt32(StartStep_in->Text);
-		int TypeOfTask = 0;
-		DataTable->RowCount = Convert::ToDouble(MaxStepsCount_in->Text);
+
 	}
 
 	double f(double x_in, double v_in)
 	{
 		// PARAMETERS
-		double V = Convert::ToDouble(V_textbox->Text);
-		double Q = Convert::ToDouble(Q_textbox->Text);
-		double B = Convert::ToDouble(B_textbox->Text);
+		double V = Convert::ToDouble(V_textbox->Text, CultureInfo::InvariantCulture);
+		double Q = Convert::ToDouble(Q_textbox->Text, CultureInfo::InvariantCulture);
+		double B = Convert::ToDouble(B_textbox->Text, CultureInfo::InvariantCulture);
 
 		return (-B * (1 / V) * (v_in - Q * V * (1 / B)));
 	}
 
-	double* Method_RK3(double x_in, double v_in, double h_in, bool Const_step/* ,double(*f)(double, double)*/)
+	double* Method_RK3(double* pnt, bool Const_step/* ,double(*f)(double, double)*/)
 	{
-		double pnt[3] = { 0, 0, 0 };
+
+		double x_in = pnt[0];
+		double v_in = pnt[1];
+		double h_in = pnt[2];
+
 		double h = h_in;
 		double x, k1, k2, k3, v;
 
@@ -498,7 +509,7 @@ namespace AirInTheRoom {
 				dinp *= 2;
 
 			double S = Math::Abs((src[0][1] - src[1][1]) / (dinp - 1));
-			if (((Convert::ToDouble(Eps_in-> Text) / (dinp * 2)) <= S) && (S <= Convert::ToDouble(Eps_in->Text)))
+			if (((Convert::ToDouble(Eps_in-> Text, CultureInfo::InvariantCulture) / (dinp * 2)) <= S) && (S <= Convert::ToDouble(Eps_in->Text, CultureInfo::InvariantCulture)))
 			{
 				pnt[0] = src[0][0];
 				pnt[1] = src[0][1];
@@ -507,7 +518,7 @@ namespace AirInTheRoom {
 				return pnt;
 			}
 			else
-				if (S < (Convert::ToDouble(Eps_in->Text) / (dinp * 2)))
+				if (S < (Convert::ToDouble(Eps_in->Text, CultureInfo::InvariantCulture) / (dinp * 2)))
 				{
 					pnt[0] = src[0][0];
 					pnt[1] = src[0][1];
@@ -529,39 +540,78 @@ namespace AirInTheRoom {
 	}
 
 private: System::Void MaxStepsCount_in_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-	DataTable->RowCount = Convert::ToInt32(MaxStepsCount_in->Text);			// по изменени максимального количества шагов изменяю размер таблицы
+	//DataTable->RowCount = Convert::ToInt32(MaxStepsCount_in->Text);			// по изменени максимального количества шагов изменяю размер таблицы
 }
 
 // обработка события нажатия кнопки Вычислить
 private: System::Void Calculate_Click(System::Object^  sender, System::EventArgs^  e) {
 
-	DataTable->RowCount = Convert::ToInt32(MaxStepsCount_in->Text);			// задаю размер таблицы
+	GraphPane^ panel = zedGraphControl1->GraphPane;
+	panel->CurveList->Clear();
+	PointPairList^ f1_list = gcnew ZedGraph::PointPairList();
+	
+
+	double Epsl = Convert::ToDouble(Eps_in->Text, CultureInfo::InvariantCulture);
+	double LocalErrorControl = Convert::ToDouble(LocalErrorControl_in->Text, CultureInfo::InvariantCulture);
+	int MaxStepsCount = Convert::ToInt32(MaxStepsCount_in->Text, CultureInfo::InvariantCulture);
+	double StartStep = Convert::ToDouble(StartStep_in->Text, CultureInfo::InvariantCulture);
+	int TypeOfTask = 0;
+	bool Constant_Step = Constant_Step_in->Checked;
+
+	//DataTable->RowCount = Convert::ToInt32(MaxStepsCount_in->Text);			// задаю размер таблицы
 
 	double u0 = 1.0;
 	double x0 = 1.0;
-	double hn = Convert::ToDouble(StartStep_in->Text);
-	double *point = new double[3];											// массив - точка: x = [0], y = [1], h = [2] 
+	double hn = StartStep;
+	double * point = new double [3];											// массив - точка: x = [0], y = [1], h = [2] 
+	
+	point[0] = x0;
+	point[1] = u0;
+	point[2] = hn;
+
+	if (DataTable->RowCount > 1)
+		while (DataTable->RowCount != 1)
+			DataTable->Rows->RemoveAt(0);
 
 	// тут пытался заполнять таблицу
 	for (int step = 0; step < Convert::ToInt32(MaxStepsCount_in->Text); step++)
 	{
+		f1_list->Add(point[0], point[1]);
+
+		DataTable->Rows->Add();
 		//col[0] = xi
-		DataTable->Rows[step]->Cells[0]->Value = Convert::ToString(point[0]);	// (v) добавление значения в 0 ячейку строки step 
+		DataTable->Rows[step]->Cells[0]->Value = point[0];	// (x) добавление значения в 0 ячейку строки step 
 		//col[1] = Vi
-		DataTable->Rows[step]->Cells[1]->Value = Convert::ToString(point[1]);	// (х)
+		DataTable->Rows[step]->Cells[1]->Value = point[1];	// (v)
 		//col[2] = V2i
 		//col[3] = Vi - V2i
 		//col[4] = hi = xi - x(i-1)
-		DataTable->Rows[step]->Cells[4]->Value = Convert::ToString(hn);
+		DataTable->Rows[step]->Cells[2]->Value = hn;
 		//col[5] = оц. лок. погр.
 		//col[6] = Vi уточн
-		point = Method_RK3(point[0], point[1], hn, true);
+
+		//point[0] = point[0] + hn;
+		//point[1] = sin(point[0]);
+		point = Method_RK3(point, true);
 	}
+	LineItem^ Curve1 = panel->AddCurve("F1(x)", f1_list, Color::Red, SymbolType::None);
+	zedGraphControl1->AxisChange();
+	zedGraphControl1->Invalidate();	
 
 	delete[] point;
 }
 
 
+private: System::Void Reload_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (DataTable->RowCount > 1)
+		while (DataTable->RowCount != 1)
+			DataTable->Rows->RemoveAt(0);
+}
+private: System::Void Constant_Step_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+	
+}
+private: System::Void zedGraphControl1_Load(System::Object^  sender, System::EventArgs^  e) {
+}
 };
 }
 

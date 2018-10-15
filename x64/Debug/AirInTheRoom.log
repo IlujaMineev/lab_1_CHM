@@ -1,9 +1,4 @@
 ﻿  TheForm.cpp
-c:\users\iluja\documents\visual studio 2015\projects\airintheroom\airintheroom\TheForm.h(422): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\iluja\documents\visual studio 2015\projects\airintheroom\airintheroom\theform.h(507): warning C4172: returning address of local variable or temporary: pnt
-c:\users\iluja\documents\visual studio 2015\projects\airintheroom\airintheroom\theform.h(516): warning C4172: returning address of local variable or temporary: pnt
-c:\users\iluja\documents\visual studio 2015\projects\airintheroom\airintheroom\theform.h(524): warning C4172: returning address of local variable or temporary: pnt
-c:\users\iluja\documents\visual studio 2015\projects\airintheroom\airintheroom\theform.h(528): warning C4172: returning address of local variable or temporary: pnt
   TheForm.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
-  AirInTheRoom.vcxproj -> C:\Users\Iluja\Documents\Visual Studio 2015\Projects\AirInTheRoom\x64\Debug\AirInTheRoom.exe
-  AirInTheRoom.vcxproj -> C:\Users\Iluja\Documents\Visual Studio 2015\Projects\AirInTheRoom\x64\Debug\AirInTheRoom.pdb (Partial PDB)
+  AirInTheRoom.vcxproj -> C:\Users\Iluja\documents\visual studio 2015\Projects\AirInTheRoom\x64\Debug\AirInTheRoom.exe
+  AirInTheRoom.vcxproj -> C:\Users\Iluja\documents\visual studio 2015\Projects\AirInTheRoom\x64\Debug\AirInTheRoom.pdb (Partial PDB)
