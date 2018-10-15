@@ -80,6 +80,17 @@ namespace AirInTheRoom {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  vi_u_tab;
 	private: System::Windows::Forms::CheckBox^  Constant_Step_in;
 	private: ZedGraph::ZedGraphControl^  zedGraphControl1;
+	private: System::Windows::Forms::GroupBox^  groupBox1;
+	private: System::Windows::Forms::Label^  Min_scale_step_out;
+	private: System::Windows::Forms::Label^  Max_scale_step_out;
+	private: System::Windows::Forms::Label^  Count_div_out;
+	private: System::Windows::Forms::Label^  Count_dub_out;
+	private: System::Windows::Forms::Label^  Min_scale_step_label;
+	private: System::Windows::Forms::Label^  Max_scale_step_label;
+	private: System::Windows::Forms::Label^  Count_div_label;
+	private: System::Windows::Forms::Label^  Count_dub_label;
+	private: System::Windows::Forms::Label^  n_steps_out;
+	private: System::Windows::Forms::Label^  n_steps_label;
 	private: System::ComponentModel::IContainer^  components;
 
 
@@ -127,8 +138,20 @@ namespace AirInTheRoom {
 			this->LP_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->vi_u_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->zedGraphControl1 = (gcnew ZedGraph::ZedGraphControl());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->n_steps_label = (gcnew System::Windows::Forms::Label());
+			this->n_steps_out = (gcnew System::Windows::Forms::Label());
+			this->Count_dub_label = (gcnew System::Windows::Forms::Label());
+			this->Count_div_label = (gcnew System::Windows::Forms::Label());
+			this->Max_scale_step_label = (gcnew System::Windows::Forms::Label());
+			this->Min_scale_step_label = (gcnew System::Windows::Forms::Label());
+			this->Count_dub_out = (gcnew System::Windows::Forms::Label());
+			this->Count_div_out = (gcnew System::Windows::Forms::Label());
+			this->Max_scale_step_out = (gcnew System::Windows::Forms::Label());
+			this->Min_scale_step_out = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DataTable))->BeginInit();
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// panel1
@@ -407,11 +430,121 @@ namespace AirInTheRoom {
 			this->zedGraphControl1->TabIndex = 0;
 			this->zedGraphControl1->Load += gcnew System::EventHandler(this, &TheForm::zedGraphControl1_Load);
 			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->Min_scale_step_out);
+			this->groupBox1->Controls->Add(this->Max_scale_step_out);
+			this->groupBox1->Controls->Add(this->Count_div_out);
+			this->groupBox1->Controls->Add(this->Count_dub_out);
+			this->groupBox1->Controls->Add(this->Min_scale_step_label);
+			this->groupBox1->Controls->Add(this->Max_scale_step_label);
+			this->groupBox1->Controls->Add(this->Count_div_label);
+			this->groupBox1->Controls->Add(this->Count_dub_label);
+			this->groupBox1->Controls->Add(this->n_steps_out);
+			this->groupBox1->Controls->Add(this->n_steps_label);
+			this->groupBox1->Location = System::Drawing::Point(5, 248);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(285, 108);
+			this->groupBox1->TabIndex = 3;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Справка";
+			// 
+			// n_steps_label
+			// 
+			this->n_steps_label->AutoSize = true;
+			this->n_steps_label->Location = System::Drawing::Point(7, 20);
+			this->n_steps_label->Name = L"n_steps_label";
+			this->n_steps_label->Size = System::Drawing::Size(25, 13);
+			this->n_steps_label->TabIndex = 0;
+			this->n_steps_label->Text = L"n = ";
+			// 
+			// n_steps_out
+			// 
+			this->n_steps_out->AutoSize = true;
+			this->n_steps_out->Location = System::Drawing::Point(136, 20);
+			this->n_steps_out->Name = L"n_steps_out";
+			this->n_steps_out->Size = System::Drawing::Size(13, 13);
+			this->n_steps_out->TabIndex = 1;
+			this->n_steps_out->Text = L"0";
+			// 
+			// Count_dub_label
+			// 
+			this->Count_dub_label->AutoSize = true;
+			this->Count_dub_label->Location = System::Drawing::Point(6, 33);
+			this->Count_dub_label->Name = L"Count_dub_label";
+			this->Count_dub_label->Size = System::Drawing::Size(89, 13);
+			this->Count_dub_label->TabIndex = 2;
+			this->Count_dub_label->Text = L"Число удвоений";
+			// 
+			// Count_div_label
+			// 
+			this->Count_div_label->AutoSize = true;
+			this->Count_div_label->Location = System::Drawing::Point(7, 46);
+			this->Count_div_label->Name = L"Count_div_label";
+			this->Count_div_label->Size = System::Drawing::Size(84, 13);
+			this->Count_div_label->TabIndex = 3;
+			this->Count_div_label->Text = L"Число делений";
+			// 
+			// Max_scale_step_label
+			// 
+			this->Max_scale_step_label->AutoSize = true;
+			this->Max_scale_step_label->Location = System::Drawing::Point(7, 59);
+			this->Max_scale_step_label->Name = L"Max_scale_step_label";
+			this->Max_scale_step_label->Size = System::Drawing::Size(108, 13);
+			this->Max_scale_step_label->TabIndex = 4;
+			this->Max_scale_step_label->Text = L"Максимальный шаг";
+			// 
+			// Min_scale_step_label
+			// 
+			this->Min_scale_step_label->AutoSize = true;
+			this->Min_scale_step_label->Location = System::Drawing::Point(7, 72);
+			this->Min_scale_step_label->Name = L"Min_scale_step_label";
+			this->Min_scale_step_label->Size = System::Drawing::Size(102, 13);
+			this->Min_scale_step_label->TabIndex = 5;
+			this->Min_scale_step_label->Text = L"Минимальный шаг";
+			// 
+			// Count_dub_out
+			// 
+			this->Count_dub_out->AutoSize = true;
+			this->Count_dub_out->Location = System::Drawing::Point(136, 33);
+			this->Count_dub_out->Name = L"Count_dub_out";
+			this->Count_dub_out->Size = System::Drawing::Size(13, 13);
+			this->Count_dub_out->TabIndex = 6;
+			this->Count_dub_out->Text = L"0";
+			// 
+			// Count_div_out
+			// 
+			this->Count_div_out->AutoSize = true;
+			this->Count_div_out->Location = System::Drawing::Point(136, 46);
+			this->Count_div_out->Name = L"Count_div_out";
+			this->Count_div_out->Size = System::Drawing::Size(13, 13);
+			this->Count_div_out->TabIndex = 7;
+			this->Count_div_out->Text = L"0";
+			// 
+			// Max_scale_step_out
+			// 
+			this->Max_scale_step_out->AutoSize = true;
+			this->Max_scale_step_out->Location = System::Drawing::Point(136, 59);
+			this->Max_scale_step_out->Name = L"Max_scale_step_out";
+			this->Max_scale_step_out->Size = System::Drawing::Size(13, 13);
+			this->Max_scale_step_out->TabIndex = 8;
+			this->Max_scale_step_out->Text = L"0";
+			// 
+			// Min_scale_step_out
+			// 
+			this->Min_scale_step_out->AutoSize = true;
+			this->Min_scale_step_out->Location = System::Drawing::Point(136, 72);
+			this->Min_scale_step_out->Name = L"Min_scale_step_out";
+			this->Min_scale_step_out->Size = System::Drawing::Size(13, 13);
+			this->Min_scale_step_out->TabIndex = 9;
+			this->Min_scale_step_out->Text = L"0";
+			// 
 			// TheForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(760, 361);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->zedGraphControl1);
 			this->Controls->Add(this->DataTable);
 			this->Controls->Add(this->panel1);
@@ -421,6 +554,8 @@ namespace AirInTheRoom {
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DataTable))->EndInit();
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -509,7 +644,7 @@ namespace AirInTheRoom {
 				dinp *= 2;
 
 			double S = Math::Abs((src[0][1] - src[1][1]) / (dinp - 1));
-			if (((Convert::ToDouble(Eps_in-> Text, CultureInfo::InvariantCulture) / (dinp * 2)) <= S) && (S <= Convert::ToDouble(Eps_in->Text, CultureInfo::InvariantCulture)))
+			if (((Convert::ToDouble(LocalErrorControl_in-> Text, CultureInfo::InvariantCulture) / (dinp * 2)) <= S) && (S <= Convert::ToDouble(LocalErrorControl_in->Text, CultureInfo::InvariantCulture)))
 			{
 				pnt[0] = src[0][0];
 				pnt[1] = src[0][1];
@@ -565,6 +700,12 @@ private: System::Void Calculate_Click(System::Object^  sender, System::EventArgs
 	double hn = StartStep;
 	double * point = new double [3];											// массив - точка: x = [0], y = [1], h = [2] 
 	
+	// СПРАВОЧНЫЕ
+	double Max_scale_step = StartStep;
+	double Min_scale_step = StartStep;
+	int Count_dub = 0;
+	int Count_div = 0;
+
 	point[0] = x0;
 	point[1] = u0;
 	point[2] = hn;
@@ -577,6 +718,12 @@ private: System::Void Calculate_Click(System::Object^  sender, System::EventArgs
 	for (int step = 0; step < Convert::ToInt32(MaxStepsCount_in->Text); step++)
 	{
 		f1_list->Add(point[0], point[1]);
+
+		if (point[2] < Min_scale_step)
+			Min_scale_step = point[2];
+		else
+			if (point[2] > Max_scale_step)
+				Max_scale_step = point[2];
 
 		DataTable->Rows->Add();
 		//col[0] = xi
@@ -592,8 +739,12 @@ private: System::Void Calculate_Click(System::Object^  sender, System::EventArgs
 
 		//point[0] = point[0] + hn;
 		//point[1] = sin(point[0]);
-		point = Method_RK3(point, true);
+		point = Method_RK3(point, Constant_Step);
 	}
+
+	Max_scale_step_out-> Text = Convert::ToString(Max_scale_step);
+	Min_scale_step_out->Text = Convert::ToString(Min_scale_step);
+
 	LineItem^ Curve1 = panel->AddCurve("F1(x)", f1_list, Color::Red, SymbolType::None);
 	zedGraphControl1->AxisChange();
 	zedGraphControl1->Invalidate();	
