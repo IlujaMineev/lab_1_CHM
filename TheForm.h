@@ -71,13 +71,13 @@ namespace AirInTheRoom {
 	private: System::Windows::Forms::TextBox^  B_textbox;
 	private: System::Windows::Forms::DataGridView^  DataTable;
 
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  xi_tab;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  vi_tab;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  v21_tab;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  sub_tab;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  hi_tab;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  LP_tab;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  vi_u_tab;
+
+
+
+
+
+
+
 	private: System::Windows::Forms::CheckBox^  Constant_Step_in;
 	private: ZedGraph::ZedGraphControl^  zedGraphControl1;
 	private: System::Windows::Forms::GroupBox^  groupBox1;
@@ -91,6 +91,15 @@ namespace AirInTheRoom {
 	private: System::Windows::Forms::Label^  Count_dub_label;
 	private: System::Windows::Forms::Label^  n_steps_out;
 	private: System::Windows::Forms::Label^  n_steps_label;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  i;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  hi_tab;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  xi_tab;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  vi_tab;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  v2_tab;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  sub_tab;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  S_tab;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  div_step_count;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dub_step_count;
 	private: System::ComponentModel::IContainer^  components;
 
 
@@ -130,25 +139,27 @@ namespace AirInTheRoom {
 			this->Eps_label = (gcnew System::Windows::Forms::Label());
 			this->TypeOfTask_label = (gcnew System::Windows::Forms::Label());
 			this->DataTable = (gcnew System::Windows::Forms::DataGridView());
-			this->xi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->vi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->hi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->v21_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->sub_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->LP_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->vi_u_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->zedGraphControl1 = (gcnew ZedGraph::ZedGraphControl());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->n_steps_label = (gcnew System::Windows::Forms::Label());
-			this->n_steps_out = (gcnew System::Windows::Forms::Label());
-			this->Count_dub_label = (gcnew System::Windows::Forms::Label());
-			this->Count_div_label = (gcnew System::Windows::Forms::Label());
-			this->Max_scale_step_label = (gcnew System::Windows::Forms::Label());
-			this->Min_scale_step_label = (gcnew System::Windows::Forms::Label());
-			this->Count_dub_out = (gcnew System::Windows::Forms::Label());
-			this->Count_div_out = (gcnew System::Windows::Forms::Label());
-			this->Max_scale_step_out = (gcnew System::Windows::Forms::Label());
 			this->Min_scale_step_out = (gcnew System::Windows::Forms::Label());
+			this->Max_scale_step_out = (gcnew System::Windows::Forms::Label());
+			this->Count_div_out = (gcnew System::Windows::Forms::Label());
+			this->Count_dub_out = (gcnew System::Windows::Forms::Label());
+			this->Min_scale_step_label = (gcnew System::Windows::Forms::Label());
+			this->Max_scale_step_label = (gcnew System::Windows::Forms::Label());
+			this->Count_div_label = (gcnew System::Windows::Forms::Label());
+			this->Count_dub_label = (gcnew System::Windows::Forms::Label());
+			this->n_steps_out = (gcnew System::Windows::Forms::Label());
+			this->n_steps_label = (gcnew System::Windows::Forms::Label());
+			this->i = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->hi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->xi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->vi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->v2_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->sub_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->S_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->div_step_count = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dub_step_count = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DataTable))->BeginInit();
 			this->groupBox1->SuspendLayout();
@@ -364,56 +375,14 @@ namespace AirInTheRoom {
 			// DataTable
 			// 
 			this->DataTable->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->DataTable->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
-				this->xi_tab, this->vi_tab,
-					this->hi_tab, this->v21_tab, this->sub_tab, this->LP_tab, this->vi_u_tab
+			this->DataTable->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(9) {
+				this->i, this->hi_tab,
+					this->xi_tab, this->vi_tab, this->v2_tab, this->sub_tab, this->S_tab, this->div_step_count, this->dub_step_count
 			});
 			this->DataTable->Location = System::Drawing::Point(296, 204);
 			this->DataTable->Name = L"DataTable";
 			this->DataTable->Size = System::Drawing::Size(455, 152);
 			this->DataTable->TabIndex = 2;
-			// 
-			// xi_tab
-			// 
-			this->xi_tab->HeaderText = L"xi";
-			this->xi_tab->Name = L"xi_tab";
-			this->xi_tab->ReadOnly = true;
-			// 
-			// vi_tab
-			// 
-			this->vi_tab->HeaderText = L"vi";
-			this->vi_tab->Name = L"vi_tab";
-			this->vi_tab->ReadOnly = true;
-			// 
-			// hi_tab
-			// 
-			this->hi_tab->HeaderText = L"hi = xi - x(i-1)";
-			this->hi_tab->Name = L"hi_tab";
-			this->hi_tab->ReadOnly = true;
-			// 
-			// v21_tab
-			// 
-			this->v21_tab->HeaderText = L"v2i";
-			this->v21_tab->Name = L"v21_tab";
-			this->v21_tab->ReadOnly = true;
-			// 
-			// sub_tab
-			// 
-			this->sub_tab->HeaderText = L"vi-v2i";
-			this->sub_tab->Name = L"sub_tab";
-			this->sub_tab->ReadOnly = true;
-			// 
-			// LP_tab
-			// 
-			this->LP_tab->HeaderText = L"оц. лок. погр.";
-			this->LP_tab->Name = L"LP_tab";
-			this->LP_tab->ReadOnly = true;
-			// 
-			// vi_u_tab
-			// 
-			this->vi_u_tab->HeaderText = L"vi уточн.";
-			this->vi_u_tab->Name = L"vi_u_tab";
-			this->vi_u_tab->ReadOnly = true;
 			// 
 			// zedGraphControl1
 			// 
@@ -449,77 +418,14 @@ namespace AirInTheRoom {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Справка";
 			// 
-			// n_steps_label
+			// Min_scale_step_out
 			// 
-			this->n_steps_label->AutoSize = true;
-			this->n_steps_label->Location = System::Drawing::Point(7, 20);
-			this->n_steps_label->Name = L"n_steps_label";
-			this->n_steps_label->Size = System::Drawing::Size(25, 13);
-			this->n_steps_label->TabIndex = 0;
-			this->n_steps_label->Text = L"n = ";
-			// 
-			// n_steps_out
-			// 
-			this->n_steps_out->AutoSize = true;
-			this->n_steps_out->Location = System::Drawing::Point(136, 20);
-			this->n_steps_out->Name = L"n_steps_out";
-			this->n_steps_out->Size = System::Drawing::Size(13, 13);
-			this->n_steps_out->TabIndex = 1;
-			this->n_steps_out->Text = L"0";
-			// 
-			// Count_dub_label
-			// 
-			this->Count_dub_label->AutoSize = true;
-			this->Count_dub_label->Location = System::Drawing::Point(6, 33);
-			this->Count_dub_label->Name = L"Count_dub_label";
-			this->Count_dub_label->Size = System::Drawing::Size(89, 13);
-			this->Count_dub_label->TabIndex = 2;
-			this->Count_dub_label->Text = L"Число удвоений";
-			// 
-			// Count_div_label
-			// 
-			this->Count_div_label->AutoSize = true;
-			this->Count_div_label->Location = System::Drawing::Point(7, 46);
-			this->Count_div_label->Name = L"Count_div_label";
-			this->Count_div_label->Size = System::Drawing::Size(84, 13);
-			this->Count_div_label->TabIndex = 3;
-			this->Count_div_label->Text = L"Число делений";
-			// 
-			// Max_scale_step_label
-			// 
-			this->Max_scale_step_label->AutoSize = true;
-			this->Max_scale_step_label->Location = System::Drawing::Point(7, 59);
-			this->Max_scale_step_label->Name = L"Max_scale_step_label";
-			this->Max_scale_step_label->Size = System::Drawing::Size(108, 13);
-			this->Max_scale_step_label->TabIndex = 4;
-			this->Max_scale_step_label->Text = L"Максимальный шаг";
-			// 
-			// Min_scale_step_label
-			// 
-			this->Min_scale_step_label->AutoSize = true;
-			this->Min_scale_step_label->Location = System::Drawing::Point(7, 72);
-			this->Min_scale_step_label->Name = L"Min_scale_step_label";
-			this->Min_scale_step_label->Size = System::Drawing::Size(102, 13);
-			this->Min_scale_step_label->TabIndex = 5;
-			this->Min_scale_step_label->Text = L"Минимальный шаг";
-			// 
-			// Count_dub_out
-			// 
-			this->Count_dub_out->AutoSize = true;
-			this->Count_dub_out->Location = System::Drawing::Point(136, 33);
-			this->Count_dub_out->Name = L"Count_dub_out";
-			this->Count_dub_out->Size = System::Drawing::Size(13, 13);
-			this->Count_dub_out->TabIndex = 6;
-			this->Count_dub_out->Text = L"0";
-			// 
-			// Count_div_out
-			// 
-			this->Count_div_out->AutoSize = true;
-			this->Count_div_out->Location = System::Drawing::Point(136, 46);
-			this->Count_div_out->Name = L"Count_div_out";
-			this->Count_div_out->Size = System::Drawing::Size(13, 13);
-			this->Count_div_out->TabIndex = 7;
-			this->Count_div_out->Text = L"0";
+			this->Min_scale_step_out->AutoSize = true;
+			this->Min_scale_step_out->Location = System::Drawing::Point(136, 72);
+			this->Min_scale_step_out->Name = L"Min_scale_step_out";
+			this->Min_scale_step_out->Size = System::Drawing::Size(13, 13);
+			this->Min_scale_step_out->TabIndex = 9;
+			this->Min_scale_step_out->Text = L"0";
 			// 
 			// Max_scale_step_out
 			// 
@@ -530,14 +436,138 @@ namespace AirInTheRoom {
 			this->Max_scale_step_out->TabIndex = 8;
 			this->Max_scale_step_out->Text = L"0";
 			// 
-			// Min_scale_step_out
+			// Count_div_out
 			// 
-			this->Min_scale_step_out->AutoSize = true;
-			this->Min_scale_step_out->Location = System::Drawing::Point(136, 72);
-			this->Min_scale_step_out->Name = L"Min_scale_step_out";
-			this->Min_scale_step_out->Size = System::Drawing::Size(13, 13);
-			this->Min_scale_step_out->TabIndex = 9;
-			this->Min_scale_step_out->Text = L"0";
+			this->Count_div_out->AutoSize = true;
+			this->Count_div_out->Location = System::Drawing::Point(136, 46);
+			this->Count_div_out->Name = L"Count_div_out";
+			this->Count_div_out->Size = System::Drawing::Size(13, 13);
+			this->Count_div_out->TabIndex = 7;
+			this->Count_div_out->Text = L"0";
+			// 
+			// Count_dub_out
+			// 
+			this->Count_dub_out->AutoSize = true;
+			this->Count_dub_out->Location = System::Drawing::Point(136, 33);
+			this->Count_dub_out->Name = L"Count_dub_out";
+			this->Count_dub_out->Size = System::Drawing::Size(13, 13);
+			this->Count_dub_out->TabIndex = 6;
+			this->Count_dub_out->Text = L"0";
+			// 
+			// Min_scale_step_label
+			// 
+			this->Min_scale_step_label->AutoSize = true;
+			this->Min_scale_step_label->Location = System::Drawing::Point(7, 72);
+			this->Min_scale_step_label->Name = L"Min_scale_step_label";
+			this->Min_scale_step_label->Size = System::Drawing::Size(102, 13);
+			this->Min_scale_step_label->TabIndex = 5;
+			this->Min_scale_step_label->Text = L"Минимальный шаг";
+			// 
+			// Max_scale_step_label
+			// 
+			this->Max_scale_step_label->AutoSize = true;
+			this->Max_scale_step_label->Location = System::Drawing::Point(7, 59);
+			this->Max_scale_step_label->Name = L"Max_scale_step_label";
+			this->Max_scale_step_label->Size = System::Drawing::Size(108, 13);
+			this->Max_scale_step_label->TabIndex = 4;
+			this->Max_scale_step_label->Text = L"Максимальный шаг";
+			// 
+			// Count_div_label
+			// 
+			this->Count_div_label->AutoSize = true;
+			this->Count_div_label->Location = System::Drawing::Point(7, 46);
+			this->Count_div_label->Name = L"Count_div_label";
+			this->Count_div_label->Size = System::Drawing::Size(84, 13);
+			this->Count_div_label->TabIndex = 3;
+			this->Count_div_label->Text = L"Число делений";
+			// 
+			// Count_dub_label
+			// 
+			this->Count_dub_label->AutoSize = true;
+			this->Count_dub_label->Location = System::Drawing::Point(6, 33);
+			this->Count_dub_label->Name = L"Count_dub_label";
+			this->Count_dub_label->Size = System::Drawing::Size(89, 13);
+			this->Count_dub_label->TabIndex = 2;
+			this->Count_dub_label->Text = L"Число удвоений";
+			// 
+			// n_steps_out
+			// 
+			this->n_steps_out->AutoSize = true;
+			this->n_steps_out->Location = System::Drawing::Point(136, 20);
+			this->n_steps_out->Name = L"n_steps_out";
+			this->n_steps_out->Size = System::Drawing::Size(13, 13);
+			this->n_steps_out->TabIndex = 1;
+			this->n_steps_out->Text = L"0";
+			// 
+			// n_steps_label
+			// 
+			this->n_steps_label->AutoSize = true;
+			this->n_steps_label->Location = System::Drawing::Point(7, 20);
+			this->n_steps_label->Name = L"n_steps_label";
+			this->n_steps_label->Size = System::Drawing::Size(25, 13);
+			this->n_steps_label->TabIndex = 0;
+			this->n_steps_label->Text = L"n = ";
+			// 
+			// i
+			// 
+			this->i->HeaderText = L"i";
+			this->i->Name = L"i";
+			this->i->Width = 50;
+			// 
+			// hi_tab
+			// 
+			this->hi_tab->HeaderText = L"h (i-1)";
+			this->hi_tab->Name = L"hi_tab";
+			this->hi_tab->ReadOnly = true;
+			this->hi_tab->Width = 50;
+			// 
+			// xi_tab
+			// 
+			this->xi_tab->HeaderText = L"xi";
+			this->xi_tab->Name = L"xi_tab";
+			this->xi_tab->ReadOnly = true;
+			this->xi_tab->Width = 50;
+			// 
+			// vi_tab
+			// 
+			this->vi_tab->HeaderText = L"vi";
+			this->vi_tab->Name = L"vi_tab";
+			this->vi_tab->ReadOnly = true;
+			this->vi_tab->Width = 50;
+			// 
+			// v2_tab
+			// 
+			this->v2_tab->HeaderText = L"v2i";
+			this->v2_tab->Name = L"v2_tab";
+			this->v2_tab->ReadOnly = true;
+			this->v2_tab->Width = 50;
+			// 
+			// sub_tab
+			// 
+			this->sub_tab->HeaderText = L"vi-v2i";
+			this->sub_tab->Name = L"sub_tab";
+			this->sub_tab->ReadOnly = true;
+			this->sub_tab->Width = 50;
+			// 
+			// S_tab
+			// 
+			this->S_tab->HeaderText = L"S";
+			this->S_tab->Name = L"S_tab";
+			this->S_tab->ReadOnly = true;
+			this->S_tab->Width = 50;
+			// 
+			// div_step_count
+			// 
+			this->div_step_count->HeaderText = L"Ум. шага";
+			this->div_step_count->Name = L"div_step_count";
+			this->div_step_count->ReadOnly = true;
+			this->div_step_count->Width = 50;
+			// 
+			// dub_step_count
+			// 
+			this->dub_step_count->HeaderText = L"Ув. шага";
+			this->dub_step_count->Name = L"dub_step_count";
+			this->dub_step_count->Width = 50;
 			// 
 			// TheForm
 			// 
@@ -574,105 +604,28 @@ namespace AirInTheRoom {
 		return (-B * (1 / V) * (v_in - Q * V * (1 / B)));
 	}
 
-	double* Method_RK3(double* pnt, bool Const_step/* ,double(*f)(double, double)*/)
+	double* Method_RK3(double* pnt/* ,double(*f)(double, double)*/)
 	{
 
 		double x_in = pnt[0];
 		double v_in = pnt[1];
 		double h_in = pnt[2];
 
-		double h = h_in;
 		double x, k1, k2, k3, v;
 
-		if (Const_step == true)
-		{
-			x = x_in + h;
-			k1 = f(x_in, v_in);
-			k2 = f(x_in + h / 2, v_in + h / 2 * k1);
-			k3 = f(x_in + h, v_in + h * (2 * k2 - k1));
-			v = v_in + h / 6 * (k1 + 4 * k2 + k3);
+		x = x_in + h_in;
+		k1 = f(x_in, v_in);
+		k2 = f(x_in + h_in / 2, v_in + h_in / 2 * k1);
+		k3 = f(x_in + h_in, v_in + h_in * (2 * k2 - k1));
+		v = v_in + h_in / 6 * (k1 + 4 * k2 + k3);
 
-			pnt[0] = x;
-			pnt[1] = v;
-			pnt[2] = h;
-		}
-		else
-		{
-			double src[2][3];
-
-			// WHOLE STEP
-			h = h_in;
-			x = x_in + h;
-			k1 = f(x_in, v_in);
-			k2 = f(x_in + h / 2, v_in + h / 2 * k1);
-			k3 = f(x_in + h, v_in + h * (2 * k2 - k1));
-			v = v_in + h / 6 * (k1 + 4 * k2 + k3);
-
-			// the 1st point with whole step
-			src[0][0] = x;
-			src[0][1] = v;
-			src[0][2] = h;
-
-			// HALF OF STEP
-			h = h_in / 2;
-			x = x_in + h;
-			k1 = f(x_in, v_in);
-			k2 = f(x_in + h / 2, v_in + h / 2 * k1);
-			k3 = f(x_in + h, v_in + h * (2 * k2 - k1));
-			v = v_in + h / 6 * (k1 + 4 * k2 + k3);
-
-			// the 1st point with half of step
-			src[1][0] = x;
-			src[1][1] = v;
-			src[1][2] = h;
-
-			h = h_in / 2;
-			x = src[1][0] + h;
-			k1 = f(src[1][0], src[1][1]);
-			k2 = f(src[1][0] + h / 2, src[1][1] + h / 2 * k1);
-			k3 = f(src[1][0] + h, src[1][1] + h * (2 * k2 - k1));
-			v = src[1][1] + h / 6 * (k1 + 4 * k2 + k3);
-
-			// the 2nd point with half of step
-			src[1][0] = x;
-			src[1][1] = v;
-			src[1][2] = h;
-
-			int p = 2;		// порядок метода (наверное)
-			int dinp = 1;
-			for (int i = 0; i < p; i++)
-				dinp *= 2;
-
-			double S = Math::Abs((src[0][1] - src[1][1]) / (dinp - 1));
-			if (((Convert::ToDouble(LocalErrorControl_in-> Text, CultureInfo::InvariantCulture) / (dinp * 2)) <= S) && (S <= Convert::ToDouble(LocalErrorControl_in->Text, CultureInfo::InvariantCulture)))
-			{
-				pnt[0] = src[0][0];
-				pnt[1] = src[0][1];
-				pnt[2] = src[0][2];
-
-				return pnt;
-			}
-			else
-				if (S < (Convert::ToDouble(Eps_in->Text, CultureInfo::InvariantCulture) / (dinp * 2)))
-				{
-					pnt[0] = src[0][0];
-					pnt[1] = src[0][1];
-					pnt[2] = src[0][2] * 2;
-
-					return pnt;
-				}
-				else
-				{
-					pnt[0] = x_in;
-					pnt[1] = v_in;
-					pnt[2] = h_in / 2;
-
-					return pnt;
-				}
-		}
+		pnt[0] = x;
+		pnt[1] = v;
+		pnt[2] = h_in;
 
 		return pnt;
 	}
+
 
 private: System::Void MaxStepsCount_in_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 	//DataTable->RowCount = Convert::ToInt32(MaxStepsCount_in->Text);			// по изменени максимального количества шагов изменяю размер таблицы
@@ -693,18 +646,27 @@ private: System::Void Calculate_Click(System::Object^  sender, System::EventArgs
 	int TypeOfTask = 0;
 	bool Constant_Step = Constant_Step_in->Checked;
 
-	//DataTable->RowCount = Convert::ToInt32(MaxStepsCount_in->Text);			// задаю размер таблицы
-
 	double u0 = 1.0;
 	double x0 = 1.0;
 	double hn = StartStep;
 	double * point = new double [3];											// массив - точка: x = [0], y = [1], h = [2] 
 	
+	// Для половинного шага и оценки ЛП
+	double *src1 = new double[3];
+	double *src2 = new double[3];
+	int p = 2;		// порядок метода
+	int dinp = 1;
+	for (int i = 0; i < p; i++)
+		dinp *= 2;
+	double Eps_max = Convert::ToDouble(LocalErrorControl_in->Text, CultureInfo::InvariantCulture);
+	double Eps_min = Eps_max / (dinp * 2);
+
 	// СПРАВОЧНЫЕ
-	double Max_scale_step = StartStep;
+	double Max_scale_step = 0;
 	double Min_scale_step = StartStep;
 	int Count_dub = 0;
 	int Count_div = 0;
+	int step = 1;
 
 	point[0] = x0;
 	point[1] = u0;
@@ -714,42 +676,115 @@ private: System::Void Calculate_Click(System::Object^  sender, System::EventArgs
 		while (DataTable->RowCount != 1)
 			DataTable->Rows->RemoveAt(0);
 
-	// тут пытался заполнять таблицу
-	for (int step = 0; step < Convert::ToInt32(MaxStepsCount_in->Text); step++)
-	{
-		f1_list->Add(point[0], point[1]);
+	f1_list->Add(point[0], point[1]);
+	DataTable->Rows->Add();
+	DataTable->Rows[0]->Cells[0]->Value = 0;					// i
+	DataTable->Rows[0]->Cells[1]->Value = point[2];				// h i-1
+	DataTable->Rows[0]->Cells[2]->Value = point[0];				// xi
+	DataTable->Rows[0]->Cells[3]->Value = point[1];				// v1
 
+	for (step; step < Convert::ToInt32(MaxStepsCount_in->Text); step++)
+	{
 		if (point[2] < Min_scale_step)
 			Min_scale_step = point[2];
 		else
 			if (point[2] > Max_scale_step)
 				Max_scale_step = point[2];
 
-		DataTable->Rows->Add();
-		//col[0] = xi
-		DataTable->Rows[step]->Cells[0]->Value = point[0];	// (x) добавление значения в 0 ячейку строки step 
-		//col[1] = Vi
-		DataTable->Rows[step]->Cells[1]->Value = point[1];	// (v)
-		//col[2] = V2i
-		//col[3] = Vi - V2i
-		//col[4] = hi = xi - x(i-1)
-		DataTable->Rows[step]->Cells[2]->Value = hn;
-		//col[5] = оц. лок. погр.
-		//col[6] = Vi уточн
+		// ВЫЧИСЛЕНИЕ СЛЕДУЮЩЕЙ ТОЧКИ
 
-		//point[0] = point[0] + hn;
-		//point[1] = sin(point[0]);
-		point = Method_RK3(point, Constant_Step);
+		if (Constant_Step == true)
+		{
+			point = Method_RK3(point);
+
+			f1_list->Add(point[0], point[1]);
+
+			DataTable->Rows->Add();
+			DataTable->Rows[step]->Cells[0]->Value = step;					// i
+			DataTable->Rows[step]->Cells[1]->Value = point[2];				// h i-1
+			DataTable->Rows[step]->Cells[2]->Value = point[0];				// xi
+			DataTable->Rows[step]->Cells[3]->Value = point[1];				// v1
+			//DataTable->Rows[step]->Cells[4]->Value = src2[1];				// v2i
+			//DataTable->Rows[step]->Cells[5]->Value = (src1[1] - src2[1]);	// vi - v2i
+			//DataTable->Rows[step]->Cells[6]->Value = S;					// S
+			DataTable->Rows[step]->Cells[7]->Value = Count_div;				// Div
+			DataTable->Rows[step]->Cells[8]->Value = Count_dub;				// Dub
+			
+		}
+		else
+		{
+			// WHOLE STEP
+			src1 = Method_RK3(point);
+
+			// HALF OF STEP
+			src2 = point;
+			src2[2] = src2[2] / 2;
+
+			src2 = Method_RK3(src2);
+			src2 = Method_RK3(src2);
+
+			double S = Math::Abs((src1[1] - src2[1]) / (dinp - 1));
+
+			if ((Eps_min <= S) && (S <= Eps_max))
+			{
+				point = src1;
+
+				f1_list->Add(point[0], point[1]);
+
+				DataTable->Rows->Add();
+				DataTable->Rows[step]->Cells[0]->Value = step;					// i
+				DataTable->Rows[step]->Cells[1]->Value = point[2];				// h i-1
+				DataTable->Rows[step]->Cells[2]->Value = point[0];				// xi
+				DataTable->Rows[step]->Cells[3]->Value = point[1];				// v1
+				DataTable->Rows[step]->Cells[4]->Value = src2[1];				// v2i
+				DataTable->Rows[step]->Cells[5]->Value = (src1[1] - src2[1]);	// vi - v2i
+				DataTable->Rows[step]->Cells[6]->Value = S;						// S
+				DataTable->Rows[step]->Cells[7]->Value = Count_div;				// Div
+				DataTable->Rows[step]->Cells[8]->Value = Count_dub;				// Dub
+			}
+			else
+				if (S < Eps_min)
+				{
+					point = src1;
+					Count_dub++;
+
+					f1_list->Add(point[0], point[1]);
+
+					DataTable->Rows->Add();
+					DataTable->Rows[step]->Cells[0]->Value = step;					// i
+					DataTable->Rows[step]->Cells[1]->Value = point[2];				// h i-1
+					DataTable->Rows[step]->Cells[2]->Value = point[0];				// xi
+					DataTable->Rows[step]->Cells[3]->Value = point[1];				// v1
+					DataTable->Rows[step]->Cells[4]->Value = src2[1];				// v2i
+					DataTable->Rows[step]->Cells[5]->Value = (src1[1] - src2[1]);	// vi - v2i
+					DataTable->Rows[step]->Cells[6]->Value = S;						// S
+					DataTable->Rows[step]->Cells[7]->Value = Count_div;				// Div
+					DataTable->Rows[step]->Cells[8]->Value = Count_dub;				// Dub
+
+					point[2] = point[2] * 2;		// удвоение шага
+				}
+				else
+				{
+					point[2] = point[2] / 2;		// деление шага
+					Count_div++;
+					step--;
+				}
+		}
 	}
 
 	Max_scale_step_out-> Text = Convert::ToString(Max_scale_step);
 	Min_scale_step_out->Text = Convert::ToString(Min_scale_step);
+	Count_dub_out->Text = Convert::ToString(Count_dub);
+	Count_div_out->Text = Convert::ToString(Count_div);
+	n_steps_out->Text = Convert::ToString(step);
 
 	LineItem^ Curve1 = panel->AddCurve("F1(x)", f1_list, Color::Red, SymbolType::None);
 	zedGraphControl1->AxisChange();
 	zedGraphControl1->Invalidate();	
 
 	delete[] point;
+	//delete[] src1;
+	//delete[] src2;
 }
 
 
