@@ -91,6 +91,19 @@ namespace AirInTheRoom {
 	private: System::Windows::Forms::Label^  Count_dub_label;
 	private: System::Windows::Forms::Label^  n_steps_out;
 	private: System::Windows::Forms::Label^  n_steps_label;
+
+
+
+
+
+
+
+
+
+	private: System::Windows::Forms::TextBox^  xn_in;
+	private: System::Windows::Forms::Label^  xn_label;
+	private: System::Windows::Forms::Label^  u0_label;
+	private: System::Windows::Forms::TextBox^  u0_in;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  i;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  hi_tab;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  xi_tab;
@@ -100,6 +113,7 @@ namespace AirInTheRoom {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  S_tab;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  div_step_count;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  dub_step_count;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  u_tab;
 	private: System::ComponentModel::IContainer^  components;
 
 
@@ -118,6 +132,10 @@ namespace AirInTheRoom {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->u0_label = (gcnew System::Windows::Forms::Label());
+			this->u0_in = (gcnew System::Windows::Forms::TextBox());
+			this->xn_in = (gcnew System::Windows::Forms::TextBox());
+			this->xn_label = (gcnew System::Windows::Forms::Label());
 			this->Constant_Step_in = (gcnew System::Windows::Forms::CheckBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -139,6 +157,16 @@ namespace AirInTheRoom {
 			this->Eps_label = (gcnew System::Windows::Forms::Label());
 			this->TypeOfTask_label = (gcnew System::Windows::Forms::Label());
 			this->DataTable = (gcnew System::Windows::Forms::DataGridView());
+			this->i = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->hi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->xi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->vi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->v2_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->sub_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->S_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->div_step_count = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dub_step_count = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->u_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->zedGraphControl1 = (gcnew ZedGraph::ZedGraphControl());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->Min_scale_step_out = (gcnew System::Windows::Forms::Label());
@@ -151,15 +179,6 @@ namespace AirInTheRoom {
 			this->Count_dub_label = (gcnew System::Windows::Forms::Label());
 			this->n_steps_out = (gcnew System::Windows::Forms::Label());
 			this->n_steps_label = (gcnew System::Windows::Forms::Label());
-			this->i = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->hi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->xi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->vi_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->v2_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->sub_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->S_tab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->div_step_count = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dub_step_count = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DataTable))->BeginInit();
 			this->groupBox1->SuspendLayout();
@@ -167,6 +186,11 @@ namespace AirInTheRoom {
 			// 
 			// panel1
 			// 
+			this->panel1->BackColor = System::Drawing::SystemColors::ControlLight;
+			this->panel1->Controls->Add(this->u0_label);
+			this->panel1->Controls->Add(this->u0_in);
+			this->panel1->Controls->Add(this->xn_in);
+			this->panel1->Controls->Add(this->xn_label);
 			this->panel1->Controls->Add(this->Constant_Step_in);
 			this->panel1->Controls->Add(this->label3);
 			this->panel1->Controls->Add(this->label2);
@@ -189,13 +213,47 @@ namespace AirInTheRoom {
 			this->panel1->Controls->Add(this->TypeOfTask_label);
 			this->panel1->Location = System::Drawing::Point(5, 12);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(285, 229);
+			this->panel1->Size = System::Drawing::Size(285, 255);
 			this->panel1->TabIndex = 0;
+			// 
+			// u0_label
+			// 
+			this->u0_label->AutoSize = true;
+			this->u0_label->Location = System::Drawing::Point(6, 38);
+			this->u0_label->Name = L"u0_label";
+			this->u0_label->Size = System::Drawing::Size(22, 13);
+			this->u0_label->TabIndex = 25;
+			this->u0_label->Text = L"u0:";
+			// 
+			// u0_in
+			// 
+			this->u0_in->Location = System::Drawing::Point(34, 35);
+			this->u0_in->Name = L"u0_in";
+			this->u0_in->Size = System::Drawing::Size(36, 20);
+			this->u0_in->TabIndex = 24;
+			this->u0_in->Text = L"0.0";
+			// 
+			// xn_in
+			// 
+			this->xn_in->Location = System::Drawing::Point(161, 169);
+			this->xn_in->Name = L"xn_in";
+			this->xn_in->Size = System::Drawing::Size(121, 20);
+			this->xn_in->TabIndex = 23;
+			this->xn_in->Text = L"9.0";
+			// 
+			// xn_label
+			// 
+			this->xn_label->AutoSize = true;
+			this->xn_label->Location = System::Drawing::Point(3, 172);
+			this->xn_label->Name = L"xn_label";
+			this->xn_label->Size = System::Drawing::Size(86, 13);
+			this->xn_label->TabIndex = 22;
+			this->xn_label->Text = L"Конечная точка";
 			// 
 			// Constant_Step_in
 			// 
 			this->Constant_Step_in->AutoSize = true;
-			this->Constant_Step_in->Location = System::Drawing::Point(161, 169);
+			this->Constant_Step_in->Location = System::Drawing::Point(161, 195);
 			this->Constant_Step_in->Name = L"Constant_Step_in";
 			this->Constant_Step_in->Size = System::Drawing::Size(111, 17);
 			this->Constant_Step_in->TabIndex = 21;
@@ -206,7 +264,7 @@ namespace AirInTheRoom {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(191, 38);
+			this->label3->Location = System::Drawing::Point(223, 38);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(17, 13);
 			this->label3->TabIndex = 19;
@@ -215,7 +273,7 @@ namespace AirInTheRoom {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(95, 38);
+			this->label2->Location = System::Drawing::Point(158, 38);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(16, 13);
 			this->label2->TabIndex = 18;
@@ -224,7 +282,7 @@ namespace AirInTheRoom {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(3, 38);
+			this->label1->Location = System::Drawing::Point(78, 38);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(17, 13);
 			this->label1->TabIndex = 17;
@@ -232,59 +290,66 @@ namespace AirInTheRoom {
 			// 
 			// Q_textbox
 			// 
-			this->Q_textbox->Location = System::Drawing::Point(117, 35);
+			this->Q_textbox->Location = System::Drawing::Point(181, 35);
 			this->Q_textbox->Name = L"Q_textbox";
-			this->Q_textbox->Size = System::Drawing::Size(68, 20);
+			this->Q_textbox->Size = System::Drawing::Size(36, 20);
 			this->Q_textbox->TabIndex = 16;
 			this->Q_textbox->Text = L"2.0";
 			// 
 			// V_textbox
 			// 
-			this->V_textbox->Location = System::Drawing::Point(21, 35);
+			this->V_textbox->Location = System::Drawing::Point(101, 35);
 			this->V_textbox->Name = L"V_textbox";
-			this->V_textbox->Size = System::Drawing::Size(68, 20);
+			this->V_textbox->Size = System::Drawing::Size(36, 20);
 			this->V_textbox->TabIndex = 15;
 			this->V_textbox->Text = L"10.0";
 			// 
 			// B_textbox
 			// 
-			this->B_textbox->Location = System::Drawing::Point(214, 35);
+			this->B_textbox->Location = System::Drawing::Point(246, 35);
 			this->B_textbox->Name = L"B_textbox";
-			this->B_textbox->Size = System::Drawing::Size(68, 20);
+			this->B_textbox->Size = System::Drawing::Size(36, 20);
 			this->B_textbox->TabIndex = 14;
 			this->B_textbox->Text = L"1.0";
 			// 
 			// Reload
 			// 
-			this->Reload->Location = System::Drawing::Point(161, 192);
+			this->Reload->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->Reload->Location = System::Drawing::Point(161, 218);
 			this->Reload->Name = L"Reload";
 			this->Reload->Size = System::Drawing::Size(66, 32);
 			this->Reload->TabIndex = 13;
 			this->Reload->Text = L"Обновить";
-			this->Reload->UseVisualStyleBackColor = true;
+			this->Reload->UseVisualStyleBackColor = false;
 			this->Reload->Click += gcnew System::EventHandler(this, &TheForm::Reload_Click);
 			// 
 			// Exit
 			// 
-			this->Exit->Location = System::Drawing::Point(230, 192);
+			this->Exit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->Exit->Location = System::Drawing::Point(230, 218);
 			this->Exit->Name = L"Exit";
 			this->Exit->Size = System::Drawing::Size(52, 32);
 			this->Exit->TabIndex = 12;
 			this->Exit->Text = L"Выйти";
-			this->Exit->UseVisualStyleBackColor = true;
+			this->Exit->UseVisualStyleBackColor = false;
 			// 
 			// Calculate
 			// 
-			this->Calculate->Location = System::Drawing::Point(6, 169);
+			this->Calculate->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->Calculate->Location = System::Drawing::Point(4, 195);
 			this->Calculate->Name = L"Calculate";
 			this->Calculate->Size = System::Drawing::Size(145, 55);
 			this->Calculate->TabIndex = 11;
 			this->Calculate->Text = L"Вычислить";
-			this->Calculate->UseVisualStyleBackColor = true;
+			this->Calculate->UseVisualStyleBackColor = false;
 			this->Calculate->Click += gcnew System::EventHandler(this, &TheForm::Calculate_Click);
 			// 
 			// TypeOfTask_in
 			// 
+			this->TypeOfTask_in->BackColor = System::Drawing::SystemColors::Window;
 			this->TypeOfTask_in->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Тестовая", L"Основная" });
 			this->TypeOfTask_in->Location = System::Drawing::Point(136, 8);
 			this->TypeOfTask_in->Name = L"TypeOfTask_in";
@@ -375,14 +440,80 @@ namespace AirInTheRoom {
 			// DataTable
 			// 
 			this->DataTable->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->DataTable->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(9) {
+			this->DataTable->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(10) {
 				this->i, this->hi_tab,
-					this->xi_tab, this->vi_tab, this->v2_tab, this->sub_tab, this->S_tab, this->div_step_count, this->dub_step_count
+					this->xi_tab, this->vi_tab, this->v2_tab, this->sub_tab, this->S_tab, this->div_step_count, this->dub_step_count, this->u_tab
 			});
-			this->DataTable->Location = System::Drawing::Point(296, 204);
+			this->DataTable->Location = System::Drawing::Point(296, 230);
 			this->DataTable->Name = L"DataTable";
-			this->DataTable->Size = System::Drawing::Size(455, 152);
+			this->DataTable->Size = System::Drawing::Size(455, 132);
 			this->DataTable->TabIndex = 2;
+			// 
+			// i
+			// 
+			this->i->HeaderText = L"i";
+			this->i->Name = L"i";
+			this->i->Width = 50;
+			// 
+			// hi_tab
+			// 
+			this->hi_tab->HeaderText = L"h (i-1)";
+			this->hi_tab->Name = L"hi_tab";
+			this->hi_tab->ReadOnly = true;
+			this->hi_tab->Width = 50;
+			// 
+			// xi_tab
+			// 
+			this->xi_tab->HeaderText = L"xi";
+			this->xi_tab->Name = L"xi_tab";
+			this->xi_tab->ReadOnly = true;
+			this->xi_tab->Width = 50;
+			// 
+			// vi_tab
+			// 
+			this->vi_tab->HeaderText = L"vi";
+			this->vi_tab->Name = L"vi_tab";
+			this->vi_tab->ReadOnly = true;
+			this->vi_tab->Width = 50;
+			// 
+			// v2_tab
+			// 
+			this->v2_tab->HeaderText = L"v2i";
+			this->v2_tab->Name = L"v2_tab";
+			this->v2_tab->ReadOnly = true;
+			this->v2_tab->Width = 50;
+			// 
+			// sub_tab
+			// 
+			this->sub_tab->HeaderText = L"vi-v2i";
+			this->sub_tab->Name = L"sub_tab";
+			this->sub_tab->ReadOnly = true;
+			this->sub_tab->Width = 50;
+			// 
+			// S_tab
+			// 
+			this->S_tab->HeaderText = L"S";
+			this->S_tab->Name = L"S_tab";
+			this->S_tab->ReadOnly = true;
+			this->S_tab->Width = 50;
+			// 
+			// div_step_count
+			// 
+			this->div_step_count->HeaderText = L"Ум. шага";
+			this->div_step_count->Name = L"div_step_count";
+			this->div_step_count->ReadOnly = true;
+			this->div_step_count->Width = 50;
+			// 
+			// dub_step_count
+			// 
+			this->dub_step_count->HeaderText = L"Ув. шага";
+			this->dub_step_count->Name = L"dub_step_count";
+			this->dub_step_count->Width = 50;
+			// 
+			// u_tab
+			// 
+			this->u_tab->HeaderText = L"U";
+			this->u_tab->Name = L"u_tab";
 			// 
 			// zedGraphControl1
 			// 
@@ -395,12 +526,13 @@ namespace AirInTheRoom {
 			this->zedGraphControl1->ScrollMinX = 0;
 			this->zedGraphControl1->ScrollMinY = 0;
 			this->zedGraphControl1->ScrollMinY2 = 0;
-			this->zedGraphControl1->Size = System::Drawing::Size(455, 186);
+			this->zedGraphControl1->Size = System::Drawing::Size(455, 212);
 			this->zedGraphControl1->TabIndex = 0;
 			this->zedGraphControl1->Load += gcnew System::EventHandler(this, &TheForm::zedGraphControl1_Load);
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->groupBox1->Controls->Add(this->Min_scale_step_out);
 			this->groupBox1->Controls->Add(this->Max_scale_step_out);
 			this->groupBox1->Controls->Add(this->Count_div_out);
@@ -411,9 +543,9 @@ namespace AirInTheRoom {
 			this->groupBox1->Controls->Add(this->Count_dub_label);
 			this->groupBox1->Controls->Add(this->n_steps_out);
 			this->groupBox1->Controls->Add(this->n_steps_label);
-			this->groupBox1->Location = System::Drawing::Point(5, 248);
+			this->groupBox1->Location = System::Drawing::Point(5, 273);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(285, 108);
+			this->groupBox1->Size = System::Drawing::Size(285, 89);
 			this->groupBox1->TabIndex = 3;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Справка";
@@ -508,78 +640,18 @@ namespace AirInTheRoom {
 			this->n_steps_label->TabIndex = 0;
 			this->n_steps_label->Text = L"n = ";
 			// 
-			// i
-			// 
-			this->i->HeaderText = L"i";
-			this->i->Name = L"i";
-			this->i->Width = 50;
-			// 
-			// hi_tab
-			// 
-			this->hi_tab->HeaderText = L"h (i-1)";
-			this->hi_tab->Name = L"hi_tab";
-			this->hi_tab->ReadOnly = true;
-			this->hi_tab->Width = 50;
-			// 
-			// xi_tab
-			// 
-			this->xi_tab->HeaderText = L"xi";
-			this->xi_tab->Name = L"xi_tab";
-			this->xi_tab->ReadOnly = true;
-			this->xi_tab->Width = 50;
-			// 
-			// vi_tab
-			// 
-			this->vi_tab->HeaderText = L"vi";
-			this->vi_tab->Name = L"vi_tab";
-			this->vi_tab->ReadOnly = true;
-			this->vi_tab->Width = 50;
-			// 
-			// v2_tab
-			// 
-			this->v2_tab->HeaderText = L"v2i";
-			this->v2_tab->Name = L"v2_tab";
-			this->v2_tab->ReadOnly = true;
-			this->v2_tab->Width = 50;
-			// 
-			// sub_tab
-			// 
-			this->sub_tab->HeaderText = L"vi-v2i";
-			this->sub_tab->Name = L"sub_tab";
-			this->sub_tab->ReadOnly = true;
-			this->sub_tab->Width = 50;
-			// 
-			// S_tab
-			// 
-			this->S_tab->HeaderText = L"S";
-			this->S_tab->Name = L"S_tab";
-			this->S_tab->ReadOnly = true;
-			this->S_tab->Width = 50;
-			// 
-			// div_step_count
-			// 
-			this->div_step_count->HeaderText = L"Ум. шага";
-			this->div_step_count->Name = L"div_step_count";
-			this->div_step_count->ReadOnly = true;
-			this->div_step_count->Width = 50;
-			// 
-			// dub_step_count
-			// 
-			this->dub_step_count->HeaderText = L"Ув. шага";
-			this->dub_step_count->Name = L"dub_step_count";
-			this->dub_step_count->Width = 50;
-			// 
 			// TheForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(760, 361);
+			this->BackColor = System::Drawing::SystemColors::ControlDarkDark;
+			this->ClientSize = System::Drawing::Size(760, 373);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->zedGraphControl1);
 			this->Controls->Add(this->DataTable);
 			this->Controls->Add(this->panel1);
 			this->Name = L"TheForm";
-			this->Text = L"TheForm";
+			this->Text = L"Лабораторная работа №1";
 			this->Load += gcnew System::EventHandler(this, &TheForm::TheForm_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
@@ -592,6 +664,19 @@ namespace AirInTheRoom {
 #pragma endregion
 	private: System::Void TheForm_Load(System::Object^  sender, System::EventArgs^  e) {
 
+	}
+
+	double f_test(double x_in)
+	{
+		// PARAMETERS
+		double V = Convert::ToDouble(V_textbox->Text, CultureInfo::InvariantCulture);
+		double Q = Convert::ToDouble(Q_textbox->Text, CultureInfo::InvariantCulture);
+		double B = Convert::ToDouble(B_textbox->Text, CultureInfo::InvariantCulture);
+		double u0 = Convert::ToDouble(u0_in->Text, CultureInfo::InvariantCulture);
+		double C = (1 / B) * V * log((-1) * B * (1 / V) * u0 + Q);
+
+		return ( (-1)*(1/B)*V*exp( (-1)*B*(1/V)*(x_in+C) - Q) );
+	
 	}
 
 	double f(double x_in, double v_in)
@@ -628,40 +713,46 @@ namespace AirInTheRoom {
 
 
 private: System::Void MaxStepsCount_in_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-	//DataTable->RowCount = Convert::ToInt32(MaxStepsCount_in->Text);			// по изменени максимального количества шагов изменяю размер таблицы
 }
 
-// обработка события нажатия кнопки Вычислить
+// Calculate
 private: System::Void Calculate_Click(System::Object^  sender, System::EventArgs^  e) {
 
 	GraphPane^ panel = zedGraphControl1->GraphPane;
 	panel->CurveList->Clear();
 	PointPairList^ f1_list = gcnew ZedGraph::PointPairList();
-	
+	PointPairList^ f2_list = gcnew ZedGraph::PointPairList();
 
 	double Epsl = Convert::ToDouble(Eps_in->Text, CultureInfo::InvariantCulture);
 	double LocalErrorControl = Convert::ToDouble(LocalErrorControl_in->Text, CultureInfo::InvariantCulture);
 	int MaxStepsCount = Convert::ToInt32(MaxStepsCount_in->Text, CultureInfo::InvariantCulture);
 	double StartStep = Convert::ToDouble(StartStep_in->Text, CultureInfo::InvariantCulture);
+	double xn = Convert::ToDouble(xn_in->Text, CultureInfo::InvariantCulture);
 	int TypeOfTask = 0;
+	if (TypeOfTask_in->Text == L"Тестовая")
+		TypeOfTask = 1;
 	bool Constant_Step = Constant_Step_in->Checked;
 
-	double u0 = 1.0;
-	double x0 = 1.0;
+	double *tmp = new double[3];		// KOSTYL EMAE
+
+	double u0 = Convert::ToDouble(u0_in->Text, CultureInfo::InvariantCulture);;
+	double x0 = 0.0;
 	double hn = StartStep;
-	double * point = new double [3];											// массив - точка: x = [0], y = [1], h = [2] 
-	
-	// Для половинного шага и оценки ЛП
+	double * point = new double [3];					// array is point: x = [0], y = [1], h = [2] 
+	double u = u0;
+	double x = x0;
+
+	// halfy step's parameters
 	double *src1 = new double[3];
 	double *src2 = new double[3];
-	int p = 2;		// порядок метода
+	int p = 2;		// degree of the method
 	int dinp = 1;
 	for (int i = 0; i < p; i++)
 		dinp *= 2;
 	double Eps_max = Convert::ToDouble(LocalErrorControl_in->Text, CultureInfo::InvariantCulture);
 	double Eps_min = Eps_max / (dinp * 2);
 
-	// СПРАВОЧНЫЕ
+	// reference
 	double Max_scale_step = 0;
 	double Min_scale_step = StartStep;
 	int Count_dub = 0;
@@ -682,8 +773,13 @@ private: System::Void Calculate_Click(System::Object^  sender, System::EventArgs
 	DataTable->Rows[0]->Cells[1]->Value = point[2];				// h i-1
 	DataTable->Rows[0]->Cells[2]->Value = point[0];				// xi
 	DataTable->Rows[0]->Cells[3]->Value = point[1];				// v1
+	if (TypeOfTask == 1)
+	{
+		DataTable->Rows[step]->Cells[9]->Value = f_test(point[0]);
+		f2_list->Add(point[0], f_test(point[0]));
+	}
 
-	for (step; step < Convert::ToInt32(MaxStepsCount_in->Text); step++)
+	for (step; ((Math::Abs(point[1] - xn) >= Epsl) && (step < MaxStepsCount)); step++)
 	{
 		if (point[2] < Min_scale_step)
 			Min_scale_step = point[2];
@@ -691,7 +787,7 @@ private: System::Void Calculate_Click(System::Object^  sender, System::EventArgs
 			if (point[2] > Max_scale_step)
 				Max_scale_step = point[2];
 
-		// ВЫЧИСЛЕНИЕ СЛЕДУЮЩЕЙ ТОЧКИ
+		// Calc the next
 
 		if (Constant_Step == true)
 		{
@@ -709,25 +805,40 @@ private: System::Void Calculate_Click(System::Object^  sender, System::EventArgs
 			//DataTable->Rows[step]->Cells[6]->Value = S;					// S
 			DataTable->Rows[step]->Cells[7]->Value = Count_div;				// Div
 			DataTable->Rows[step]->Cells[8]->Value = Count_dub;				// Dub
+			if (TypeOfTask == 1)
+			{
+				DataTable->Rows[step]->Cells[9]->Value = f_test(point[0]);
+				f2_list->Add(point[0], f_test(point[0]));
+			}
 			
 		}
 		else
 		{
 			// WHOLE STEP
-			src1 = Method_RK3(point);
+			for (int i = 0; i < 3; i++)
+				tmp[i] = point[i];
+			tmp = Method_RK3(tmp);
+			for (int i = 0; i < 3; i++)
+				src1[i] = tmp[i];
 
 			// HALF OF STEP
-			src2 = point;
+			for (int i = 0; i<3; i++)
+				src2[i] = point[i];
 			src2[2] = src2[2] / 2;
 
-			src2 = Method_RK3(src2);
-			src2 = Method_RK3(src2);
+			for (int i = 0; i < 3; i++)
+				tmp[i] = src2[i];
+			tmp = Method_RK3(tmp);
+			tmp = Method_RK3(tmp);
+			for (int i = 0; i < 3; i++)
+				src2[i] = tmp[i];
 
 			double S = Math::Abs((src1[1] - src2[1]) / (dinp - 1));
 
 			if ((Eps_min <= S) && (S <= Eps_max))
 			{
-				point = src1;
+				for (int i = 0; i<3; i++)
+					point[i] = src1[i];
 
 				f1_list->Add(point[0], point[1]);
 
@@ -741,6 +852,11 @@ private: System::Void Calculate_Click(System::Object^  sender, System::EventArgs
 				DataTable->Rows[step]->Cells[6]->Value = S;						// S
 				DataTable->Rows[step]->Cells[7]->Value = Count_div;				// Div
 				DataTable->Rows[step]->Cells[8]->Value = Count_dub;				// Dub
+				if (TypeOfTask == 1)
+				{
+					DataTable->Rows[step]->Cells[9]->Value = f_test(point[0]);
+					f2_list->Add(point[0], f_test(point[0]));
+				}
 			}
 			else
 				if (S < Eps_min)
@@ -760,12 +876,17 @@ private: System::Void Calculate_Click(System::Object^  sender, System::EventArgs
 					DataTable->Rows[step]->Cells[6]->Value = S;						// S
 					DataTable->Rows[step]->Cells[7]->Value = Count_div;				// Div
 					DataTable->Rows[step]->Cells[8]->Value = Count_dub;				// Dub
+					if (TypeOfTask == 1)
+					{
+						DataTable->Rows[step]->Cells[9]->Value = f_test(point[0]);
+						f2_list->Add(point[0], f_test(point[0]));
+					}
 
-					point[2] = point[2] * 2;		// удвоение шага
+					point[2] = point[2] * 2;		// doubling of step
 				}
 				else
 				{
-					point[2] = point[2] / 2;		// деление шага
+					point[2] = point[2] / 2;		// dividing of step
 					Count_div++;
 					step--;
 				}
@@ -778,7 +899,9 @@ private: System::Void Calculate_Click(System::Object^  sender, System::EventArgs
 	Count_div_out->Text = Convert::ToString(Count_div);
 	n_steps_out->Text = Convert::ToString(step);
 
-	LineItem^ Curve1 = panel->AddCurve("F1(x)", f1_list, Color::Red, SymbolType::None);
+	LineItem^ Curve1 = panel->AddCurve("F1(x)", f1_list, Color::Green, SymbolType::None);
+	if (TypeOfTask == 1)
+		LineItem^ Curve2 = panel->AddCurve("TEST(x)", f2_list, Color::Red, SymbolType::Plus);
 	zedGraphControl1->AxisChange();
 	zedGraphControl1->Invalidate();	
 
@@ -792,6 +915,7 @@ private: System::Void Reload_Click(System::Object^  sender, System::EventArgs^  
 	if (DataTable->RowCount > 1)
 		while (DataTable->RowCount != 1)
 			DataTable->Rows->RemoveAt(0);
+
 }
 private: System::Void Constant_Step_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 	
